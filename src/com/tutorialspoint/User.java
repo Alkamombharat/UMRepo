@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "user")
-public class User implements Serializable {
+public class User<Object> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private int userid;
@@ -60,19 +60,19 @@ public class User implements Serializable {
 		this.profession = profession;
 	}
 
-	@Override
-	public boolean equals(Object object) {
-		if (object == null) {
-			return false;
-		} else if (!(object instanceof User)) {
-			return false;
-		} else {
-			User user = (User) object;
-			if (userid == user.getId() && name.equals(user.getName())
-					&& profession.equals(user.getProfession())) {
-				return true;
-			}
-		}
-		return false;
-	}
+//	@Override
+//	public boolean equals(Object object) {
+//		if (object == null) {
+//			return false;
+//		} else if (!(object instanceof User)) {
+//			return false;
+//		} else {
+//			User user = (User) object;
+//			if (userid == user.getId() && name.equals(user.getName())
+//					&& profession.equals(user.getProfession())) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 }

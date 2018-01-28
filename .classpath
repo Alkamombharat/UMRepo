@@ -40,5 +40,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/persistence-api-1.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/validation-api-1.1.0.Final.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/yasson-1.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jaxrs-ri-2.0-sources.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-client-2.0-sources.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
