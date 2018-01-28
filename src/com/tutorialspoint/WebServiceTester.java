@@ -7,9 +7,17 @@ import java.util.List;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.Invocation.Builder;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Form;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.client.ClientResponse;
+import org.glassfish.jersey.logging.LoggingFeature;
 
 public class WebServiceTester {
 
@@ -57,6 +65,12 @@ public class WebServiceTester {
 		}
 		System.out
 				.println("Test case name: testGetAllUsers, Result: " + result);
+		for (User user : users) {
+			System.out.println("Users id is: " + user.getId());
+			System.out.println("Users name is: " + user.getName());
+			System.out.println("Users profession is: " + user.getProfession());
+		}
+
 	}
 
 	// Test: Get User of id 1
@@ -64,10 +78,11 @@ public class WebServiceTester {
 	private void testGetUser() {
 		User sampleUser = new User();
 		sampleUser.setId(1);
-
-		User user = client.target(REST_SERVICE_URL).path("/{userid}")
+		User user = client
+				.target(REST_SERVICE_URL.concat("?userid=" + sampleUser.getId()))
 				.resolveTemplate("userid", 1)
-				.request(MediaType.APPLICATION_XML).get(User.class);
+				.request(MediaType.APPLICATION_XML)
+				.get(User.class);
 		String result = FAIL;
 		if (sampleUser != null && sampleUser.getId() == user.getId()) {
 			result = PASS;

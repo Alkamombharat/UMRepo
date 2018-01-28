@@ -20,7 +20,6 @@ import java.util.List;
 
 public class UserDao {
 
-	@SuppressWarnings("unchecked")
 	List<User> getAllUsers() {
 		List<User> userList = null;
 		try {
