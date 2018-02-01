@@ -20,7 +20,7 @@ public class WebServiceTester {
 	private static final String FAIL = "fail";
 
 	public WebServiceTester() {
-		// TODO Auto-generated constructor stub
+		System.out.println("inside constructor");
 	}
 
 	private void init() {
@@ -49,14 +49,13 @@ public class WebServiceTester {
 	private void testGetAllUsers() {
 		GenericType<List<User>> list = new GenericType<List<User>>() {
 		};
-		List<User> users = client.target(REST_SERVICE_URL)
-				.request(MediaType.APPLICATION_XML).get(list);
+		System.out.println("testGetAllUsers URl:-->" + client.target(REST_SERVICE_URL).toString());
+		List<User> users = client.target(REST_SERVICE_URL).request(MediaType.APPLICATION_XML).get(list);
 		String result = PASS;
 		if (users.isEmpty()) {
 			result = FAIL;
 		}
-		System.out
-				.println("Test case name: testGetAllUsers, Result: " + result);
+		System.out.println("Test case name: testGetAllUsers, Result: " + result);
 	}
 
 	// Test: Get User of id 1
@@ -65,8 +64,9 @@ public class WebServiceTester {
 		User sampleUser = new User();
 		sampleUser.setId(1);
 
-		User user = client.target(REST_SERVICE_URL).path("/{userid}")
-				.resolveTemplate("userid", 1)
+		System.out.println("testGetUser URL:-->"
+				+ client.target(REST_SERVICE_URL).path("/{userid}").resolveTemplate("userid", 1).toString());
+		User user = client.target(REST_SERVICE_URL).path("/{userid}").resolveTemplate("userid", 1)
 				.request(MediaType.APPLICATION_XML).get(User.class);
 		String result = FAIL;
 		if (sampleUser != null && sampleUser.getId() == user.getId()) {
@@ -83,12 +83,9 @@ public class WebServiceTester {
 		form.param("name", "suresh");
 		form.param("profession", "clerk");
 
-		String callResult = client
-				.target(REST_SERVICE_URL)
-				.request(MediaType.APPLICATION_XML)
-				.post(Entity.entity(form,
-						MediaType.APPLICATION_FORM_URLENCODED_TYPE),
-						String.class);
+		System.out.println("testUpdateUser URL:-->" + client.target(REST_SERVICE_URL).toString());
+		String callResult = client.target(REST_SERVICE_URL).request(MediaType.APPLICATION_XML)
+				.post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED_TYPE), String.class);
 		String result = PASS;
 		if (!SUCCESS_RESULT.equals(callResult)) {
 			result = FAIL;
@@ -105,12 +102,9 @@ public class WebServiceTester {
 		form.param("name", "naresh");
 		form.param("profession", "clerk");
 
-		String callResult = client
-				.target(REST_SERVICE_URL)
-				.request(MediaType.APPLICATION_XML)
-				.put(Entity.entity(form,
-						MediaType.APPLICATION_FORM_URLENCODED_TYPE),
-						String.class);
+		System.out.println("testAddUser:-->" + client.target(REST_SERVICE_URL).toString());
+		String callResult = client.target(REST_SERVICE_URL).request(MediaType.APPLICATION_XML)
+				.put(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED_TYPE), String.class);
 
 		String result = PASS;
 		if (!SUCCESS_RESULT.equals(callResult)) {
@@ -123,8 +117,9 @@ public class WebServiceTester {
 	// Test: Delete User of id 2
 	// Test: Check if result is success XML.
 	private void testDeleteUser() {
-		String callResult = client.target(REST_SERVICE_URL).path("/{userid}")
-				.resolveTemplate("userid", 2)
+		System.out.println("testDeleteUser:-->"
+				+ client.target(REST_SERVICE_URL).path("/{userid}").resolveTemplate("userid", 2).toString());
+		String callResult = client.target(REST_SERVICE_URL).path("/{userid}").resolveTemplate("userid", 2)
 				.request(MediaType.APPLICATION_XML).delete(String.class);
 
 		String result = PASS;
