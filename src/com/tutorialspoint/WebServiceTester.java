@@ -1,7 +1,5 @@
 package com.tutorialspoint;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.List;
 
 import javax.ws.rs.client.Client;
