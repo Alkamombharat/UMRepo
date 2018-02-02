@@ -9,6 +9,15 @@
             <param-value>com.tutorialspoint</param-value> 
          </init-param> 
       </servlet> 
+      <servlet>
+        <servlet-name>DataOpsServlet</servlet-name>
+        <servlet-class>com.tutorialspoint.DataOpsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DataOpsServlet</servlet-name>
+        <url-pattern>/dataOpsServlet</url-pattern>
+    </servlet-mapping>
+ 
    <servlet-mapping> 
    <servlet-name>Jersey RESTful Application</servlet-name> 
       <url-pattern>/rest/*</url-pattern> 
