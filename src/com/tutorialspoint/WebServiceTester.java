@@ -119,7 +119,7 @@ public class WebServiceTester {
 
 try {
             
-            URL url = new URL("http://192.168.1.101:8080/javaworld/servlet/HelloJavaWorld");
+            URL url = new URL("http://localhost:8080/DataOpsServlet");
             URLConnection conn = url.openConnection();
             conn.setDoOutput(true);
             
