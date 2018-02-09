@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from UserDaoService WSDL service -->
+
+  <service name="UserDao" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://tutorialspoint.com"/>
+      <parameter name="wsdlServiceElement" value="UserDaoService"/>
+      <parameter name="schemaQualified" value="http://tutorialspoint.com"/>
+      <parameter name="wsdlServicePort" value="UserDao"/>
+      <parameter name="className" value="com.tutorialspoint.UserDao"/>
+      <parameter name="wsdlPortType" value="UserDao"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://tutorialspoint.com" xmlns:retNS="http://tutorialspoint.com" xmlns:rtns="http://tutorialspoint.com" name="getUser" qname="operNS:getUser" returnQName="retNS:getUserReturn" returnType="rtns:User" soapAction="">
+        <parameter xmlns:pns="http://tutorialspoint.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://tutorialspoint.com" xmlns:retNS="http://tutorialspoint.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addUser" qname="operNS:addUser" returnQName="retNS:addUserReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://tutorialspoint.com" xmlns:tns="http://tutorialspoint.com" qname="pns:pUser" type="tns:User"/>
+      </operation>
+      <operation xmlns:operNS="http://tutorialspoint.com" xmlns:retNS="http://tutorialspoint.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="updateUser" qname="operNS:updateUser" returnQName="retNS:updateUserReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://tutorialspoint.com" xmlns:tns="http://tutorialspoint.com" qname="pns:pUser" type="tns:User"/>
+      </operation>
+      <operation xmlns:operNS="http://tutorialspoint.com" xmlns:retNS="http://tutorialspoint.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="deleteUser" qname="operNS:deleteUser" returnQName="retNS:deleteUserReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://tutorialspoint.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="addUser getUser deleteUser updateUser"/>
+
+      <typeMapping xmlns:ns="http://tutorialspoint.com" qname="ns:User" type="java:com.tutorialspoint.User" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
