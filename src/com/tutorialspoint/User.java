@@ -8,7 +8,12 @@
 package com.tutorialspoint;
 
 public class User  implements java.io.Serializable {
-    private int id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1995364691838596498L;
+
+	private int id;
 
     private java.lang.String name;
 

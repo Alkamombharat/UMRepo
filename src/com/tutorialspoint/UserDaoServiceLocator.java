@@ -9,7 +9,12 @@ package com.tutorialspoint;
 
 public class UserDaoServiceLocator extends org.apache.axis.client.Service implements com.tutorialspoint.UserDaoService {
 
-    public UserDaoServiceLocator() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7405738933918310594L;
+
+	public UserDaoServiceLocator() {
     }
 
 
